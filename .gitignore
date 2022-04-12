@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+.venv
+.DS_Store
+.vscode/
+node_modules/
+.gitsolo
+.gitshared
+# comment
