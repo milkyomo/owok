@@ -43,6 +43,21 @@ def password_min_length(form, field):
     if len(password) < 4:
         raise ValidationError('too short o(￣o￣*)ゞ')
 
+def valid_sprite(form, field):
+    # Checking if sprite url is valid
+    url = field.data
+    valid_sprites = [
+        'https://islandracnh.s3.us-west-1.amazonaws.com/noobm1.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/noobm2.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/noobf1.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/noobf2.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/nxhoem1.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/nxhoem2.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/nxhoef1.png',
+        'https://islandracnh.s3.us-west-1.amazonaws.com/nxhoef2.png',
+    ]
+    if not url in valid_sprites:
+        raise ValidationError('Not a valid sprite url')
 
 class SignUpForm(FlaskForm):
     username = StringField(
@@ -51,4 +66,4 @@ class SignUpForm(FlaskForm):
                         DataRequired(), user_exists, email_min_length, valid_email])
     password = StringField('password', validators=[
                            DataRequired(), password_min_length])
-    sprite_url = StringField('sprite_url', validators=[DataRequired()])
+    sprite_url = StringField('sprite_url', validators=[DataRequired(), valid_sprite])
