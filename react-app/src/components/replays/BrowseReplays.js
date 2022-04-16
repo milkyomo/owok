@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import "./BrowseReplays.css";
+
 const BrowseReplays = () => {
   const [games, setGames] = useState([]);
 
@@ -9,7 +11,6 @@ const BrowseReplays = () => {
       const res = await fetch("/api/games/");
       const resData = await res.json();
       const replays = Object.values(resData);
-      console.log(replays);
       setGames(replays);
     }
     fetchGames();
@@ -17,19 +18,34 @@ const BrowseReplays = () => {
 
   const gamesComponents = games.map((game) => {
     return (
-      <div key={game.id}>
+      <div key={game.id} className="SingleGameContainer">
         <NavLink to={`/replays/${game.id}`}>
-          {game.player_one_id} vs. {game.player_two_id}
+          <div className="BrowsePlayerImages">
+            <div className="BrowseGamePlayerOne">
+              {game.user_player_one.username}
+              <img
+                src={game.user_player_one.sprite_url}
+                className="player_one_rotate"
+              />
+            </div>
+            vs.
+            <div className="BrowseGamePlayerOne">
+              {game.user_player_two.username}
+              <img src={game.user_player_two.sprite_url} />
+            </div>
+          </div>
         </NavLink>
       </div>
     );
   });
 
   return (
-    <>
-      <h1> Browse Replays</h1>
-      <ul>{gamesComponents}</ul>
-    </>
+    <div className="BrowseReplaysContainer">
+      <div className="BrowseReplaysBody">
+        <h1> Browse Replays</h1>
+        <div className="GamesContainer">{gamesComponents}</div>
+      </div>
+    </div>
   );
 };
 
