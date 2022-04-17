@@ -6,7 +6,7 @@ import "./GameArea.css";
 
 const GameArea = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionUserId = sessionUser.id;
+  // const sessionUserId = sessionUser.id;
   return (
     <div className="GameAreaContainer">
       <Board />
