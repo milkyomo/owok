@@ -57,14 +57,18 @@ const ReplayBoard = ({ game }) => {
             ></div>
           ))}
         </div>
-        <img
-          src={game?.user_player_one?.sprite_url}
-          className="replay_player_one"
-        />
-        <img
-          src={game?.user_player_two?.sprite_url}
-          className="replay_player_two"
-        />
+        <div className="replay_player_one">
+          <img
+            src={game?.user_player_one?.sprite_url}
+            // className="replay_player_one"
+          />
+        </div>
+        <div className="replay_player_two">
+          <img
+            src={game?.user_player_two?.sprite_url}
+            // className="replay_player_two"
+          />
+        </div>
         <div className="replay_board_stats_one">
           <p>{game?.user_player_one?.wins}</p>
           <p>{game?.user_player_one?.losses}</p>
