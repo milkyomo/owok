@@ -10,13 +10,10 @@ const ReplayBoard = ({ game }) => {
   const movesArr = game?.moves?.slice(1, -1).split(",");
 
   const swapPiece = () => {
-    // console.log("Click!");
     if (currPiece === omok_piece_mushroom) {
-      //   console.log("click 1");
       currPiece = omok_piece_slime;
       oppPiece = omok_piece_mushroom;
     } else {
-      //   console.log("click 2");
       currPiece = omok_piece_mushroom;
       oppPiece = omok_piece_slime;
     }
