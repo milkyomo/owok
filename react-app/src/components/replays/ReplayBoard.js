@@ -10,13 +10,16 @@ const ReplayBoard = ({ game }) => {
   const movesArr = game?.moves?.slice(1, -1).split(",");
 
   const swapPiece = () => {
-    if (currPiece === omok_piece_mushroom) {
-      currPiece = omok_piece_slime;
-      oppPiece = omok_piece_mushroom;
-    } else {
-      currPiece = omok_piece_mushroom;
-      oppPiece = omok_piece_slime;
-    }
+    let temp = currPiece;
+    currPiece = oppPiece;
+    oppPiece = temp;
+    // if (currPiece === omok_piece_mushroom) {
+    //   currPiece = omok_piece_slime;
+    //   oppPiece = omok_piece_mushroom;
+    // } else {
+    //   currPiece = omok_piece_mushroom;
+    //   oppPiece = omok_piece_slime;
+    // }
   };
 
   let moveNumber = 0;
