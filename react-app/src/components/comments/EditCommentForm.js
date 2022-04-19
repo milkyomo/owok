@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as replayActions from "../../store/replays";
 
-const EditCommentForm = ({ commentId }) => {
+import "./EditCommentForm.css";
+
+const EditCommentForm = ({ commentId, resetId }) => {
   const dispatch = useDispatch();
   const game = useSelector((state) => state.current_game?.comments);
   const commentToEdit = game[commentId];
@@ -33,6 +35,7 @@ const EditCommentForm = ({ commentId }) => {
 
     if (editedComment) {
       dispatch(replayActions.editComment(editedComment));
+      resetId();
     }
     setErrors([]);
     setContent("");
@@ -42,18 +45,18 @@ const EditCommentForm = ({ commentId }) => {
     <div className="EditCommentBox">
       <form onSubmit={handleSubmit}>
         <div className="EditCommentErrors">{errors}</div>
-        <div className="EditCommentTextBoxArea">
-          <textarea
-            type="text"
-            required
-            placeholder="Edit Comment"
-            value={content}
-            onChange={updateContent}
-          />
-          <button type="submit" disabled={errors.length > 0}>
-            Edit
-          </button>
-        </div>
+        {/* <div className="EditCommentTextBoxArea"> */}
+        <textarea
+          type="text"
+          required
+          placeholder="Edit Comment"
+          value={content}
+          onChange={updateContent}
+        />
+        <button type="submit" disabled={errors.length > 0}>
+          Edit
+        </button>
+        {/* </div> */}
       </form>
       <button
         onClick={async (e) => {
