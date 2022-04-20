@@ -12,24 +12,34 @@
 .SingleComment {
     display: flex;
     flex-direction: column;
+	/* font-family: MaplestoryOTFLight; */
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	/* background-color: #FCCDD9; */
+	/* box-shadow: inset -6px -8px 10px #EDA6BB; */
+	background-image: url("../images/yetifacetransparent.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50%;
+	background-color: #fff;
+	box-shadow: inset -6px -8px 10px #adadad;
 }
 
 .CommentLeft {
     /* width: 100%; */
-    font-family: Arial, Helvetica, sans-serif;
     overflow-wrap: break-word;
     box-sizing: border-box;
 
 	position: relative;
 	max-width: 30em;
 
-	background-color: #fff;
 	padding: 1.125em 1.5em;
     margin-bottom: 25px;
 	/* font-size: 1.25em; */
 	font-size: 15px;
 	border-radius: 1rem;
-    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+
+    /* box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2); */
 }
 
 .CommentLeft::before {
@@ -44,11 +54,11 @@
 	border-top: none;
 
 	border-bottom-color: #fff;
+	/* border-bottom-color: #FCCDD9; */
 	filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
 .CommentRight {
-    font-family: Arial, Helvetica, sans-serif;
     overflow-wrap: break-word;
     box-sizing: border-box;
 
@@ -56,13 +66,12 @@
     right: -380px;
 	max-width: 30em;
 
-	background-color: #fff;
 	padding: 1.125em 1.5em;
     margin-bottom: 25px;
 	/* font-size: 1.25em; */
 	font-size: 15px;
 	border-radius: 1rem;
-    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    /* box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2); */
 }
 
 .CommentRight::before {
@@ -77,6 +86,7 @@
 	border-top: none;
 
 	border-bottom-color: #fff;
+	/* border-bottom-color: #FCCDD9; */
 	filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
