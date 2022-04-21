@@ -37,7 +37,7 @@
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [To-do/Future Features](#to-dofuture-features)
-- [Helpful Commands](#helpful-commands)
+- [Debugging Log](#debugging-log)
 
 <br>
 
@@ -141,6 +141,16 @@
     ```bash
     npm start
     ```
+  
+# Helpful commands
+
+| Command              | Purpose                                                                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pipenv shell`       | Open your terminal in the virtual environment and be able to run flask commands without a prefix                                             |
+| `pipenv run`         | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands |
+| `flask db upgrade`   | Check in with the database and run any needed migrations                                                                                     |
+| `flask db downgrade` | Check in with the database and revert any needed migrations                                                                                  |
+| `flask seed all`     | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details                |
 
 </details>
 
@@ -183,14 +193,42 @@ In the future, I want to move the game logic to the backend for more efficiency.
 - [ ] More piece sets (pink teddy and panda!!)
 
 <br>
+  
 
-# Helpful commands
+# Debugging Log
+   
+   **[04-13-2022]**
+   
+   *Issue:*
+   Could not implement multiple foreign keys in Game referencing User (player_one and player_two)
 
-| Command              | Purpose                                                                                                                                      |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pipenv shell`       | Open your terminal in the virtual environment and be able to run flask commands without a prefix                                             |
-| `pipenv run`         | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands |
-| `flask db upgrade`   | Check in with the database and run any needed migrations                                                                                     |
-| `flask db downgrade` | Check in with the database and revert any needed migrations                                                                                  |
-| `flask seed all`     | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details                |
+   *Solution:*
+   Implemented.
+
+   **[04-15-2022]**
+   
+   *Issue:*
+   Replays were not properly playing the first move, which made the moves play out of order
+
+   *Solution:*
+   Found that the new game moves were storing with curly braces wrapping the coordinates inside
+   the string. Had to slice first and last character from string to remove curly braces
+   const movesArr = game?.moves?.slice(1, -1).split(",");
+
+   **[04-19-2022]**
+   
+   *Issue:*
+   Datetime not saving to database correctly
+
+   *Solution:*
+   Removed invocation of datetime in models
+   
+   **[04-20-2022]**
+   
+   *Issue:*
+   Sockets: not persisting data across clients, and then later emitting information universally
+
+   *Solution:*
+   Added a custom hook useDidMountEffect to ensure that the moves persist before setting the board and checking for win.
+   Added joinRoom(socketRoom) useEffect.
 
