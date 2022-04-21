@@ -229,6 +229,5 @@ In the future, I want to move the game logic to the backend for more efficiency.
    Sockets: not persisting data across clients, and then later emitting information universally
 
    *Solution:*
-   Added a custom hook useDidMountEffect to ensure that the moves persist before setting the board and checking for win.
-   Added joinRoom(socketRoom) useEffect.
+   Added a custom hook useDidMountEffect to ensure that the useEffect does not trigger on page load. Added useState to ensure that the moves persist before setting the board and checking for win. joinRoom(socketRoom) useEffect.
 
