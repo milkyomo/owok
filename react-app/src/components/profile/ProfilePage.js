@@ -29,7 +29,7 @@ const ProfilePage = () => {
         }, 2000);
       }
     })();
-  }, [userId]);
+  }, [userId, history]);
 
   useEffect(() => {
     if (!userId) {
@@ -48,7 +48,7 @@ const ProfilePage = () => {
       }
     }
     fetchUsersGames();
-  }, [userId]);
+  }, [userId, history]);
 
   if (!user) {
     return null;
