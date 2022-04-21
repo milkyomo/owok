@@ -185,7 +185,8 @@
   Pressing this lock on your replays will toggle the privacy feature! This feature allows you to hide replays from your profile! However, if the other participant in your replay does not have the game set as private, the replay will still show up on their profile.. 😥 Your name will not be displayed to non-participants on the replay if you set yourself to private, though!
   - Participants of game will be able to see the private person's name
   - People who did not participate will NOT be able to see the private person's name
-  - The privated game will show up on the other participant's profile, but NOT on the privated person's profile
+  - The privated game will show up on the other participant's profile, but NOT on the privated person's profile (when viewed by other users)
+  - You will be able to see all games, private or not private, on your own profile
   
   <p align="center">
     <img width="200" src="https://user-images.githubusercontent.com/89059894/164517326-6169a663-9cbb-4c7a-8a6a-c242dec5faf0.png" alt="slime">
