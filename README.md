@@ -6,7 +6,7 @@
 [Owok](https://uwuowok.herokuapp.com/) is a two player game based on Maplestory's popular, nostalgic mini-game: Omok. The rules of Owok are simple: successfully place 5 pieces in a row to win! 😋
 
 <p align="center">
-  <img src="https://i.gyazo.com/cfbd0aa0c8553e2bfbe3b25f79704ec7.gif" alt="Owok">
+  <img width="300" src="https://i.gyazo.com/cfbd0aa0c8553e2bfbe3b25f79704ec7.gif" alt="Owok">
 </p>
 
 ***DISCLAIMER: THIS IS NOT FOR PROFIT AND JUST FOR FUN AND WAS MADE SO I DIDN'T HAVE TO LOG ONTO MAPLESTORY TO PLAY OMOK I WILL TAKE IT DOWN IF U SEE THIS N3X0N***
