@@ -54,10 +54,10 @@ function App() {
         <ProtectedRoute path="/profile/:userId" exact={true}>
           <ProfilePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/:userId" exact={true}>
+        <ProtectedRoute path="/play/:userId" exact={true}>
           <GameArea />
         </ProtectedRoute>
-        <ProtectedRoute path="*" exact={true}>
+        <ProtectedRoute path="*">
           <Redirect to="/browse" />
         </ProtectedRoute>
       </Switch>
