@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import ChallengeModal from "./ChallengeModal";
 
 import "./ProfilePage.css";
 
@@ -182,9 +183,7 @@ const ProfilePage = () => {
                     <p>draws: {user.draws}</p>
                   </div>
                 </div>
-                <div className="ProfileChallengeButton">
-                  <button>Challenge</button>
-                </div>
+                <ChallengeModal sessionUser={sessionUser} user={user} />
               </div>
               <div className="ProfileGames">
                 {sessionUser.id === user.id
