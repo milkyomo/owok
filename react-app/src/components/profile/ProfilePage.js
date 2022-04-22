@@ -54,18 +54,22 @@ const ProfilePage = () => {
     return null;
   }
 
+  //challenge button: bring up modal that has a link to copy to challenge the player
+  //link will be /sessionuserid/userparamsid
+  //if the user is on their own profile, do not show challenge button
+
   // if user = session user, show all games
   const sessionUsersGamesComponent = games
     ?.sort((a, b) => b.id - a.id)
     .map((game) => {
       return (
-        <div key={game.id} className="SingleGameContainer">
+        <div key={game?.id} className="SingleGameContainer">
           <NavLink to={`/replays/${game.id}`}>
             <div className="BrowsePlayerImages">
               <div className="BrowseSprites">
                 <div className="BrowsePlayerOne">
                   <img
-                    src={game.user_player_one.sprite_url}
+                    src={game.user_player_one?.sprite_url}
                     className="player_one_rotate"
                     alt="player one sprite"
                   />
@@ -80,7 +84,7 @@ const ProfilePage = () => {
                 <p className="BrowseVsP">vs.</p>
                 <div className="BrowsePlayerTwo">
                   <img
-                    src={game.user_player_two.sprite_url}
+                    src={game.user_player_two?.sprite_url}
                     alt="player two sprite"
                   />
                   <p>
@@ -119,7 +123,7 @@ const ProfilePage = () => {
                   <div className="BrowseSprites">
                     <div className="BrowsePlayerOne">
                       <img
-                        src={game.user_player_one.sprite_url}
+                        src={game.user_player_one?.sprite_url}
                         className="player_one_rotate"
                         alt="player one sprite"
                       />
@@ -167,7 +171,7 @@ const ProfilePage = () => {
                 <div className="ProfileCard">
                   <div className="ProfileCardLeft">
                     <img
-                      src={user.sprite_url}
+                      src={user?.sprite_url}
                       alt={`${user.username} sprite`}
                     />
                     <p>{user.username}</p>
