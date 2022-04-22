@@ -5,7 +5,7 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/navbar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
+import UsersList from "./components/userslist/UsersList";
 import User from "./components/User";
 import GameArea from "./components/gamearea/GameArea";
 import { authenticate } from "./store/session";
@@ -55,7 +55,7 @@ function App() {
           <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path="/play" exact={true}>
-          <h1>CHALLENGE</h1>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/play/:playerOneId/:playerTwoId" exact={true}>
           <GameArea />
