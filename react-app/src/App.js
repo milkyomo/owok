@@ -54,7 +54,10 @@ function App() {
         <ProtectedRoute path="/profile/:userId" exact={true}>
           <ProfilePage />
         </ProtectedRoute>
-        <ProtectedRoute path="/play/:userId" exact={true}>
+        <ProtectedRoute path="/play" exact={true}>
+          <h1>CHALLENGE</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path="/play/:playerOneId/:playerTwoId" exact={true}>
           <GameArea />
         </ProtectedRoute>
         <ProtectedRoute path="*">
