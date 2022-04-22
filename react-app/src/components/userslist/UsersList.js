@@ -24,7 +24,7 @@ function UsersList() {
     .map((user) => {
       return (
         <div key={user.id} className="SinglePlayerContainer">
-          <NavLink to={`/users/${user.id}`}>
+          <NavLink to={`/profile/${user.id}`}>
             <img src={user.sprite_url} alt="sprite" />
             <p>{user.username}</p>
           </NavLink>
