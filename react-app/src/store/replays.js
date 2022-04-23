@@ -1,6 +1,6 @@
 const GET_REPLAY = "replays/GET_REPLAY";
-const GET_COMMENT = "games/GET_COMMENT";
-const DELETE_COMMENT = "games/DELETE_COMMENT";
+const GET_COMMENT = "replays/GET_COMMENT";
+const DELETE_COMMENT = "replays/DELETE_COMMENT";
 
 const loadReplay = (replay) => ({
   type: GET_REPLAY,

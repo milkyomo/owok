@@ -6,7 +6,7 @@ import replaysReducer from "./replays";
 
 const rootReducer = combineReducers({
   session,
-  current_game: gamesReducer,
+  current_games: gamesReducer,
   current_replay: replaysReducer,
 });
 
