@@ -4,6 +4,8 @@
 // // NOTE: save game is in replay reducer as saveReplay currently
 // // in state, this is called current_games because what if player is participating
 // // in multiple games.. ?
+// // maybe have to change model for moves to be nullable (?) since
+// // creating game without moves
 
 // const loadGame = (game) => ({
 //   type: GET_GAME,
