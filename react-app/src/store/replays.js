@@ -1,10 +1,10 @@
-const GET_GAME = "games/GET_GAME";
+const GET_REPLAY = "replays/GET_REPLAY";
 const GET_COMMENT = "games/GET_COMMENT";
 const DELETE_COMMENT = "games/DELETE_COMMENT";
 
-const loadGame = (game) => ({
-  type: GET_GAME,
-  game,
+const loadReplay = (replay) => ({
+  type: GET_REPLAY,
+  replay,
 });
 
 const loadComment = (comment) => ({
@@ -17,21 +17,21 @@ const removeComment = (comment_id) => ({
   comment_id,
 });
 
-export const fetchGame = (game_id) => async (dispatch) => {
-  const res = await fetch(`/api/replays/${game_id}`);
+export const fetchReplay = (replay_id) => async (dispatch) => {
+  const res = await fetch(`/api/replays/${replay_id}`);
 
   if (res.ok) {
-    const game = await res.json();
+    const replay = await res.json();
 
-    dispatch(loadGame(game));
-    return game;
+    dispatch(loadReplay(replay));
+    return replay;
   } else {
     const errors = await res.json();
     return errors;
   }
 };
 
-export const editGame = (privateData) => async (dispatch) => {
+export const editReplay = (privateData) => async (dispatch) => {
   const res = await fetch(`/api/replays/${privateData.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -41,13 +41,13 @@ export const editGame = (privateData) => async (dispatch) => {
   if (!res.ok) {
     return res.errors;
   }
-  const updatedGame = await res.json();
+  const updatedReplay = await res.json();
 
-  dispatch(loadGame(updatedGame));
-  return updatedGame;
+  dispatch(loadReplay(updatedReplay));
+  return updatedReplay;
 };
 
-export const saveGame = (payload) => async (dispatch) => {
+export const saveReplay = (payload) => async (dispatch) => {
   const res = await fetch(`/api/replays/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -56,7 +56,7 @@ export const saveGame = (payload) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(loadGame(data));
+    dispatch(loadReplay(data));
   } else {
     const errors = await res.json();
     return errors;
@@ -115,8 +115,8 @@ let initialState = {};
 const replaysReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
-    case GET_GAME:
-      newState = action.game;
+    case GET_REPLAY:
+      newState = action.replay;
       return newState;
     case GET_COMMENT:
       newState.comments[action.comment.id] = action.comment;

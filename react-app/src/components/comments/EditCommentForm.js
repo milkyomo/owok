@@ -6,7 +6,7 @@ import "./EditCommentForm.css";
 
 const EditCommentForm = ({ commentId, resetId }) => {
   const dispatch = useDispatch();
-  const game = useSelector((state) => state.current_game?.comments);
+  const game = useSelector((state) => state.current_replay?.comments);
   const commentToEdit = game[commentId];
 
   const [errors, setErrors] = useState([]);
