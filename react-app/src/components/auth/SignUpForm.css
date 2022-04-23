@@ -239,7 +239,7 @@
     width: 100%;
   }
 
-  .DemoButton > button:after {
+.DemoButton > button:after {
     background-clip: padding-box;
     background-color: rgb(255, 247, 83);
     /* background-color: #1CB0F6; */
@@ -253,18 +253,18 @@
     right: 0;
     top: 0;
     z-index: -1;
-  }
+}
 
-  .DemoButton > button:main,
-  .DemoButton > button:focus {
+.DemoButton > button:main,
+.DemoButton > button:focus {
     user-select: auto;
-  }
+}
 
-  .DemoButton > button:hover:not(:disabled) {
+.DemoButton > button:hover:not(:disabled) {
     filter: brightness(1.15);
-  }
+}
 
-  .contact-dropup {
+.contact-dropup {
     position: absolute;
     bottom: 10px;
     display: inline-block;
@@ -317,7 +317,6 @@
     display: block;
     text-decoration: none;
 }
-
 
 ::-webkit-scrollbar {
     width: 20px;

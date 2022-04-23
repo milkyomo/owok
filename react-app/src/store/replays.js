@@ -18,7 +18,7 @@ const removeComment = (comment_id) => ({
 });
 
 export const fetchGame = (game_id) => async (dispatch) => {
-  const res = await fetch(`/api/games/${game_id}`);
+  const res = await fetch(`/api/replays/${game_id}`);
 
   if (res.ok) {
     const game = await res.json();
@@ -32,7 +32,7 @@ export const fetchGame = (game_id) => async (dispatch) => {
 };
 
 export const editGame = (privateData) => async (dispatch) => {
-  const res = await fetch(`/api/games/${privateData.id}`, {
+  const res = await fetch(`/api/replays/${privateData.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(privateData),
@@ -48,7 +48,7 @@ export const editGame = (privateData) => async (dispatch) => {
 };
 
 export const saveGame = (payload) => async (dispatch) => {
-  const res = await fetch(`/api/games/`, {
+  const res = await fetch(`/api/replays/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
