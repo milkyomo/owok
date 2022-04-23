@@ -16,7 +16,6 @@
     grid-template-rows: repeat(15, 1fr);
     margin-left: 21px;
     padding-top: 28px;
-    /* background-color: white; */
 }
 
 .grid {
