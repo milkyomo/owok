@@ -188,11 +188,13 @@ const Board = () => {
             className={`grid ${obj.coord}`}
             onClick={(e) => sendMove(e)}
           >
-            <img
-              id={`img-${obj.coord}`}
-              src={pieces[obj?.piece]}
-              alt="boardgrid"
-            />
+            {pieces[obj?.piece] && (
+              <img
+                id={`img-${obj.coord}`}
+                src={pieces[obj?.piece]}
+                alt="boardgrid"
+              />
+            )}
           </div>
         ))}
       </div>
