@@ -26,8 +26,6 @@ function ChallengeModal({ sessionUser, user }) {
     }
   };
 
-  console.log(gameId);
-
   return (
     <div className="ProfileChallengeButton">
       <button onClick={handleClick}>Challenge</button>
