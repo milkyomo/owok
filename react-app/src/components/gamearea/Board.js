@@ -6,8 +6,8 @@ import * as gameActions from "../../store/game";
 // import { GridData } from "./GridData";
 import Chat from "./Chat";
 
-import omok_piece_mushroom from "../images/omok_piece_mushroom.png";
-import omok_piece_slime from "../images/omok_piece_slime.png";
+// import omok_piece_mushroom from "../images/omok_piece_mushroom.png";
+// import omok_piece_slime from "../images/omok_piece_slime.png";
 
 import "./Board.css";
 
@@ -41,6 +41,10 @@ const Board = () => {
   const [chatInput, setChatInput] = useState("");
 
   // const [lastMove, setLastMove] = useState(null);
+  const omok_piece_mushroom =
+    "https://owok.s3.us-west-1.amazonaws.com/omok_piece_mushroom.png";
+  const omok_piece_slime =
+    "https://owok.s3.us-west-1.amazonaws.com/omok_piece_slime.png";
 
   const pieces = {
     0: omok_piece_mushroom,
