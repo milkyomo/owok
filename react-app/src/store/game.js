@@ -18,11 +18,13 @@ const loadGame = (game) => ({
 // });
 
 export const fetchGame = (game_id) => async (dispatch) => {
-  const res = await fetch(`/api/games.${game_id}`);
+  const res = await fetch(`/api/games/${game_id}`);
 
   if (res.ok) {
     const game = await res.json();
-
+    console.log()
+    console.log(`FETCH GAME THUNK: ${game.board}`)
+    console.log()
     dispatch(loadGame(game));
     return game;
   } else {
@@ -49,6 +51,7 @@ export const createGame = (game) => async (dispatch) => {
 };
 
 export const updateGame = (game) => async (dispatch) => {
+  console.log('UPDATE GAME, just inside', game)
   const res = await fetch(`/api/games/${game.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -57,7 +60,9 @@ export const updateGame = (game) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
+    console.log('UPDATE GAME RESOK', data)
     dispatch(loadGame(data));
+    return data;
   } else {
     const errors = await res.json();
     return errors;
@@ -71,6 +76,7 @@ const gamesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_GAME:
       newState[action.game.id] = action.game;
+      return newState
     default:
       return state;
   }

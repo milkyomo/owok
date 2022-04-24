@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required
 from app.models import db, Game, User
 from sqlalchemy.orm.attributes import flag_modified
+from app.socket import socketio
 
 game_routes = Blueprint("games", __name__)
 
@@ -45,17 +46,19 @@ def create_game():
 # @login_required
 def update_game(id):
     data = request.json
-    move = data["move"]
+    # move = data["move"]
     game = Game.query.get(id)
+    move = "c" + data["move"]
     if not game:
         return {"errors": "Game not found"}
     else:
         if game.winner_id is not None:
             return {"errors": "Game is over"}
         else:
-            place_piece(game, move)
+            place_piece(game, move, data["player_id"])
             flag_modified(game, "board")
             db.session.commit()
+            socketio.emit('place_piece', broadcast=True, room=f'{game.player_one_id}{game.player_two_id}')
             return {**game.to_dict()}
 
 
@@ -71,10 +74,12 @@ DISPLACE = {
 }
 
 
-def place_piece(game, move):
-    if move not in game.board:
-        game.board[move] = game.turn
-        game.moves = game.moves + f",{move}" if len(game.moves) > 0 else f"{move}"
+def place_piece(game, move, player_id):
+    print(f'INSIDE PLACE_PIECE')
+    if game.board[move]["piece"] == "" and game.get_players()[game.turn] == player_id:
+        print(f'TRY PLACE_PIECE')
+        game.board[move]["piece"] = game.turn
+        game.moves = game.moves + f",{move[1:]}" if len(game.moves) > 0 else f"{move[1:]}"
         check_game(game, move)
 
 
@@ -98,6 +103,7 @@ def check_game(game, move, n=5):
 
 
 def check_line(game, move, displacement, n=5):
+    print(f'INSIDE CHECK_LINE')
     return (
         check_vector(game, move, displacement, n)
         + check_vector(game, move, -displacement, n)
@@ -106,32 +112,26 @@ def check_line(game, move, displacement, n=5):
 
 
 def check_vector(game, move, displacement, n=5):
-    look_piece = game.board[move]
+    look_piece = game.board[move]["piece"]
     count = 0
 
-    while look_piece == game.board[move] and count < n:
+    while look_piece == game.board[move]["piece"] and count < n:
         count += 1
-        print(
-            f"""
-        convert: {move} by {displacement}*{count} to {f'{int(move) + (displacement * count):04}'}
-        """
-        )
-        look_move = f"{int(move) + (displacement * count):04}"
-        if look_move in game.board:
+        look_move = "c" + f"{int(move[1:]) + (displacement * count):04}"
+        if not look_move in game.board or game.board[look_move]["piece"] == "":
+              break
+        else:
             print(
                 f"""
-            look_piece: {game.board[look_move]}
+            look_piece: {game.board[look_move]['piece']}
             """
             )
-            look_piece = game.board[look_move]
-        else:
-            break
+            look_piece = game.board[look_move]["piece"]
 
     return count
 
 
 def end_game(game):
-    # if game.winner_id is None:
     if len(game.moves.split(",")) == 225:
         game.winner_id = -1  # tie
     else:
@@ -139,11 +139,4 @@ def end_game(game):
 
 
 def swap_piece(game, players=2):
-    # print(
-    #     f"""
-    #   TRYNA SWAP OUT HERE BRUH
-    #   {game.turn} to {(game.turn + 1) % players}
-    # """
-    # )
     game.turn = (game.turn + 1) % players
-    # game.turn = game.player_one_id if game.turn == game.player_two_id else game.
