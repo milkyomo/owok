@@ -161,6 +161,7 @@ const Board = () => {
         player_id: user.id,
       };
       dispatch(gameActions.updateGame(game_move));
+
       // socket.emit('place_piece', { room: socketRoom })
       // let data = dispatch(gameActions.updateGame(game_move))
       // if (data) socket.emit('place_piece', { room: socketRoom })
@@ -169,6 +170,26 @@ const Board = () => {
       // )
     }
   };
+
+  let currentTurn = (
+    <p className="CurrentTurn">It's {players[playerOneId]?.username}'s turn.</p>
+  );
+
+  if (game?.turn === 0) {
+    currentTurn = (
+      <p className="CurrentTurn">
+        It's {players[playerOneId]?.username}'s turn.
+      </p>
+    );
+  }
+
+  if (game?.turn === 1) {
+    currentTurn = (
+      <p className="CurrentTurn">
+        It's {players[playerTwoId]?.username}'s turn.
+      </p>
+    );
+  }
 
   let gameStatusMessage = (
     <p className="GameStatusMessage">
@@ -233,6 +254,7 @@ const Board = () => {
         setChatInput={setChatInput}
         sendChat={sendChat}
       />
+      {currentTurn}
     </div>
   );
 };
