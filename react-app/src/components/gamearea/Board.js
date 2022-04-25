@@ -2,7 +2,7 @@ import { React, useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 // import * as replayActions from "../../store/replays";
-import * as gameActions from "../../store/game";
+import gamesReducer, * as gameActions from "../../store/game";
 // import { GridData } from "./GridData";
 import Chat from "./Chat";
 
@@ -75,11 +75,6 @@ const Board = () => {
     socket.on("leave_room", (data) => {
       console.log("useEffect, leave_room", data);
       console.log(data.players);
-      // console.log(
-      //   "initial check",
-      //   gameOver && !notation.length && !Object.keys(board).length
-      // );
-
       setPlayers(data.players);
     });
 
@@ -96,16 +91,6 @@ const Board = () => {
       socket.disconnect();
     };
   }, []);
-
-  const sendChat = (e) => {
-    e.preventDefault();
-    socket.emit("chat", {
-      user: user.username,
-      msg: chatInput,
-      room: socketRoom,
-    });
-    setChatInput("");
-  };
 
   useEffect(() => {
     joinRoom(socketRoom);
@@ -129,6 +114,16 @@ const Board = () => {
 
   const joinRoom = (newRoom) => {
     socket.emit("join_room", { user: user, room: newRoom });
+  };
+
+  const sendChat = (e) => {
+    e.preventDefault();
+    socket.emit("chat", {
+      username: user.username,
+      msg: chatInput,
+      room: socketRoom,
+    });
+    setChatInput("");
   };
 
   // const leaveRoom = (room = socketRoom) => {
@@ -161,21 +156,12 @@ const Board = () => {
         player_id: user.id,
       };
       dispatch(gameActions.updateGame(game_move));
-
-      // socket.emit('place_piece', { room: socketRoom })
-      // let data = dispatch(gameActions.updateGame(game_move))
-      // if (data) socket.emit('place_piece', { room: socketRoom })
-      // dispatch(gameActions.updateGame(game_move)).then(
-      //   socket.emit('place_piece', { room: socketRoom })
-      // )
     }
   };
 
-  let currentTurn = (
-    <p className="CurrentTurn">It's {players[playerOneId]?.username}'s turn.</p>
-  );
+  let currentTurn = <p className="CurrentTurn">Game over!</p>;
 
-  if (game?.turn === 0) {
+  if (!game?.winner_id && game?.turn === 0 && players[playerOneId]?.username) {
     currentTurn = (
       <p className="CurrentTurn">
         It's {players[playerOneId]?.username}'s turn.
@@ -183,7 +169,7 @@ const Board = () => {
     );
   }
 
-  if (game?.turn === 1) {
+  if (!game?.winner_id && game?.turn === 1 && players[playerTwoId]?.username) {
     currentTurn = (
       <p className="CurrentTurn">
         It's {players[playerTwoId]?.username}'s turn.
@@ -195,7 +181,9 @@ const Board = () => {
     <p className="GameStatusMessage">
       {game?.winner_id === -1
         ? "It's a draw!"
-        : `${players[game?.winner_id]?.username} won!`}
+        : players[game?.winner_id]?.username
+        ? `${players[game?.winner_id]?.username} won!`
+        : ""}
     </p>
   );
 
@@ -229,11 +217,16 @@ const Board = () => {
       <p className="board_player_one_username">
         {players[playerOneId]?.username}
       </p>
-      <div className="board_stats_one">
-        <p>{players[playerOneId]?.wins}</p>
+      {players[playerOneId] && (
+        <div className="board_stats_one">
+          <p>{game?.user_player_one?.wins}</p>
+          <p>{game?.user_player_one?.losses}</p>
+          <p>{game?.user_player_one?.draws}</p>
+          {/* <p>{players[playerOneId]?.wins}</p>
         <p>{players[playerOneId]?.losses}</p>
-        <p>{players[playerOneId]?.draws}</p>
-      </div>
+        <p>{players[playerOneId]?.draws}</p> */}
+        </div>
+      )}
       <img
         src={players[playerTwoId]?.sprite_url}
         className="board_player_two"
@@ -242,11 +235,16 @@ const Board = () => {
       <p className="board_player_two_username">
         {players[playerTwoId]?.username}
       </p>
-      <div className="board_stats_two">
-        <p>{players[playerTwoId]?.wins}</p>
+      {players[playerTwoId] && (
+        <div className="board_stats_two">
+          <p>{game?.user_player_two?.wins}</p>
+          <p>{game?.user_player_two?.losses}</p>
+          <p>{game?.user_player_two?.draws}</p>
+          {/* <p>{players[playerTwoId]?.wins}</p>
         <p>{players[playerTwoId]?.losses}</p>
-        <p>{players[playerTwoId]?.draws}</p>
-      </div>
+        <p>{players[playerTwoId]?.draws}</p> */}
+        </div>
+      )}
       <Chat
         socketRoom={socketRoom}
         messages={messages}
