@@ -1,0 +1,44 @@
+.InfoButton {
+    position: absolute;
+    bottom: 50px;
+    right: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.InfoButton > h1 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.InfoModal {
+    width: 550px;
+    height: 80vh;
+    min-height: 320px;
+    font-family: MaplestoryOTFLight;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* text-align: center; */
+    line-height: 1em;
+    padding: 10px 10px 40px 10px;
+    overflow-y: scroll;
+}
+
+.InfoModal > h1 {
+    margin: 50px 0 30px 0;
+    text-shadow: -2px -2px 0 #2c2c2c, 2px -2px 0 #2c2c2c, -2px 2px 0 #2c2c2c, 2px 2px 0 #2c2c2c;
+    color: #ffffff;
+    font-size: 45px;
+}
+
+.InfoModal > h2 {
+    margin-bottom: 0
+}
+
+.InfoModal > p {
+    padding: 0 40px;
+    line-height: 1.5rem;
+}

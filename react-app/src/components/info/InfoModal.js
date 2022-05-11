@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Modal } from "../../context/Modal";
+import { ModalTwo } from "../../context/Modal";
 import Info from "./Info";
-import MapleAdministrator from "../images/MapleAdministrator";
+import MapleAdministrator from "../images/NPC_Maple_Administrator.png";
+
+import "./Info.css";
 
 function InfoModal() {
   const [showModal, setShowModal] = useState(false);
@@ -14,10 +16,11 @@ function InfoModal() {
         onClick={() => setShowModal(true)}
       />
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <ModalTwo onClose={() => setShowModal(false)}>
           <Info onClose={() => setShowModal(false)} />
-        </Modal>
+        </ModalTwo>
       )}
+      <h1>Need help?</h1>
     </div>
   );
 }
