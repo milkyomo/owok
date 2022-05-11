@@ -11,7 +11,18 @@
 .InfoButton > h1 {
     margin: 0;
     font-size: 15px;
+    font-family: MaplestoryOTFLight;
+    /* animation: animate 1.5s alternate infinite; */
 }
+/*
+@keyframes animate{
+    0%{
+      color: black;
+    }
+    100%{
+      color: rgb(14, 35, 219);
+    }
+  } */
 
 .InfoModal {
     width: 550px;
@@ -32,13 +43,22 @@
     text-shadow: -2px -2px 0 #2c2c2c, 2px -2px 0 #2c2c2c, -2px 2px 0 #2c2c2c, 2px 2px 0 #2c2c2c;
     color: #ffffff;
     font-size: 45px;
+    display: flex;
+    align-items: center;
 }
 
 .InfoModal > h2 {
-    margin-bottom: 0
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
 }
 
 .InfoModal > p {
     padding: 0 40px;
     line-height: 1.5rem;
+}
+
+.glitterface {
+    display: flex;
+    flex-direction: row;
 }

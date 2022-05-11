@@ -6,8 +6,25 @@ import "./Info.css";
 const Info = () => {
   return (
     <div className="InfoModal">
-      <h1>Owok Help Page</h1>
-      <h2>How do I start a game?</h2>
+      <h1>
+        <img
+          src="https://owok.s3.us-west-1.amazonaws.com/teeheenoob.png"
+          alt="noob teehee face"
+          style={{ transform: "scaleX(-1)" }}
+        />
+        Owok Help Page{" "}
+        <img
+          src="https://owok.s3.us-west-1.amazonaws.com/teeheenoob.png"
+          alt="noob teehee face"
+        />
+      </h1>
+      <h2 className="HowToStart">
+        How do I start a game?{" "}
+        <img
+          src="https://owok.s3.us-west-1.amazonaws.com/glitternoob.png"
+          alt="noob glitter face"
+        />
+      </h2>
       <p>
         1. Begin by asking a friend if they would like to play, and make sure
         they have an account! <br />
@@ -20,6 +37,9 @@ const Info = () => {
         4. Press the "Let's Play!" button to go to the game lobby and wait for
         your friend join to begin! <br />
         <br />
+        <br />
+        Once you complete a game, you must make a new game to play again. <br />
+        <br />
       </p>
       <p style={{ color: "red" }}>
         **IMPORTANT** Only you and the chosen friend (the person's profile that
@@ -27,16 +47,31 @@ const Info = () => {
         else who joins will not be able to play! <br />
         <br />
       </p>
-      <h2>How do I play Owok?</h2>
+      <h2>
+        <img
+          src="https://owok.s3.us-west-1.amazonaws.com/wtfnoob.png"
+          alt="noob f6"
+          style={{ transform: "scaleX(-1)", margin: "0 10px 0 0" }}
+        />{" "}
+        How do I play Owok?
+      </h2>
       <p>
-        Owok is a connect 5 game. The first to place 5 pieces in a row wins,
-        whether it be horizontally, vertically, or even diagonally! <br />
+        Owok is a connect 5 game. You and your opponent will take turns placing
+        pieces, and the first person to place 5 pieces in a row wins, whether it
+        be horizontally, vertically, or even diagonally! <br />
         <br />
         Since you and your opponent are both trying to place 5 of your own
         pieces in a row, make sure you keep an eye out and block your opponent
         to prevent them from winning! ( •̀ ω •́ )✧ <br /> <br />
       </p>
-      <h2>Privating Replays</h2>
+      <h2>
+        Privating Replays{" "}
+        <img
+          src="https://owok.s3.us-west-1.amazonaws.com/ehehnoob.png"
+          alt="noob smolder face"
+          style={{ margin: "0 0 0 10px" }}
+        />
+      </h2>
       <p>
         Every match will be displayed under "Replays" for people to view! You
         have the ability to "private" a match that you participated in on your
