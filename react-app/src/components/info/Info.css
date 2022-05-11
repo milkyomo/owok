@@ -36,6 +36,8 @@
     line-height: 1em;
     padding: 10px 10px 40px 10px;
     overflow-y: scroll;
+    /* scrollbar-gutter: none; */
+    margin: 0 0 20px 20px;
 }
 
 .InfoModal > h1 {
