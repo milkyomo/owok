@@ -211,7 +211,7 @@ In the future, I want to implement more features to improve user experience, suc
 
 - [x] Refactor game logic
 - [x] Link to private rooms
-- [ ] Mod privileges
+- [ ] Mod permissions
 - [ ] Add forfeit button
 - [ ] Add draw button
 - [ ] More piece sets (pink teddy and panda!!)
